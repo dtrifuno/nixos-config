@@ -18,6 +18,22 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+    nixosConfigurations.birdland = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+
+      modules = [
+        ./systems/birdland/default.nix
+
+        home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = {
+            inherit inputs;
+          };
+        }
+      ];
+    };
+
     nixosConfigurations.blue-note = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
 
