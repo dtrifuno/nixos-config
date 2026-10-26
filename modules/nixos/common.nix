@@ -13,6 +13,8 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
+  programs.nix-ld.enable = true;
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
