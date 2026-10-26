@@ -1,7 +1,16 @@
 
-{ config, inputs, pkgs, ... }:
+{ config, inputs, lib, osConfig, pkgs, ... }:
 
 let
+  hostname = osConfig.networking.hostName;
+
+  sway_kb_identifier = {
+    blue-note = "1:1:AT_Translated_Set_2_keyboard";
+    birdland = "5426:101:Razer_Razer_Basilisk_Essential";
+  }.${hostname} or "1:1:AT_Translated_Set_2_keyboard";
+
+  has_battery = hostname == "blue-note";
+
   unstable-pkgs = import inputs.nixpkgs-unstable {
     inherit (pkgs) system;
     config.allowUnfree = pkgs.config.allowUnfree;
@@ -73,10 +82,30 @@ in
         { command = "wl-paste --type image --watch cliphist store"; }
         { command = "${pkgs.writeShellScript "keepassxc-unlock" ''
           ${pkgs.libsecret}/bin/secret-tool lookup keepassxc main  \
-            | ${pkgs.keepassxc}/bin/keepassxc --pw-stdin "$HOME/passwords.kdbx"
+            | ${pkgs.keepassxc}/bin/keepassxc --pw-stdin "$HOME/password-db/passwords.kdbx"
         ''}";
         }
       ];
+      workspaceOutputAssign = [
+        { workspace = "1"; output = "Dell Inc. DELL G2724D HCP06Y3"; }
+        { workspace = "2"; output = "Dell Inc. DELL G2724D HCP06Y3"; }
+        { workspace = "3"; output = "Dell Inc. DELL G2724D HCP06Y3"; }
+        { workspace = "4"; output = "Dell Inc. DELL G2724D HCP06Y3"; }
+        { workspace = "5"; output = "Dell Inc. DELL G2724D HCP06Y3"; }
+        { workspace = "6"; output = "Dell Inc. DELL G2724D 1DP06Y3"; }
+        { workspace = "7"; output = "Dell Inc. DELL G2724D 1DP06Y3"; }
+        { workspace = "8"; output = "Dell Inc. DELL G2724D 1DP06Y3"; }
+        { workspace = "9"; output = "Dell Inc. DELL G2724D 1DP06Y3"; }
+        { workspace = "10"; output = "Dell Inc. DELL G2724D 1DP06Y3"; }
+      ];
+      output = {
+        "Dell Inc. DELL G2724D HCP06Y3" = {
+          pos = "0 0";
+        };
+        "Dell Inc. DELL G2724D 1DP06Y3" = {
+          pos = "2560 0";
+        };
+      };
       modifier = "Mod4";
       terminal = "alacritty";
       menu = "rofi";
@@ -195,6 +224,7 @@ in
               cmd = "pavucontrol";
             }];
           }
+	] ++ lib.optionals has_battery [
           {
             block = "battery";
             device = "BAT0";
@@ -206,6 +236,8 @@ in
             warning = 30;
             critical = 15;
           }
+	  ] ++
+        [
           {
             block = "net";
             format = " $icon ";
@@ -227,7 +259,7 @@ in
           {
             block = "keyboard_layout";
             driver = "sway";
-            sway_kb_identifier = "1:1:AT_Translated_Set_2_keyboard";
+            sway_kb_identifier = sway_kb_identifier;
             format = " $layout";
             interval = 1;
             mappings = {
