@@ -11,8 +11,9 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../modules/nixos/common.nix
-      ../../modules/nixos/gc.nix
       ../../modules/nixos/fonts.nix
+      ../../modules/nixos/gc.nix
+      ../../modules/nixos/sway.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -47,20 +48,6 @@
     enable = true;
   };
   networking.firewall.trustedInterfaces = [ "docker0" "br-+" ];
-
-  #
-  programs.sway.enable = true;
-  security.polkit.enable = true;
-  services.displayManager.gdm.enable = true;
-
-  # for SVG icon support in swaybar
-  programs.gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
-
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services = {
-    waylock.enableGnomeKeyring = true;
-    gdm.enableGnomeKeyring = true;
-  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
