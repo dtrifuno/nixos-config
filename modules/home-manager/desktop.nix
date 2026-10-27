@@ -69,8 +69,40 @@ in
     '';
   };
 
-  # TODO: replace with fish
-  programs.bash.enable = true;
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+      set -U fish_greeting
+      function fish_right_prompt
+        echo (set_color brgreen)"$USER"(set_color normal)@(hostname)
+      end
+    '';
+    plugins = [
+      {
+        name = "hydro";
+        src = pkgs.fetchFromGitHub {
+          owner = "jorgebucaran";
+          repo = "hydro";
+          rev = "f130b55ee3eaf099eccf588e2a62e5447068d120";
+          hash = "sha256-0MMiM0NRbjZPJLAMDXb+Frgm+du80XpAviPqkwoHjDA=";
+        };
+      }
+    ];
+  };
+
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      terminal.shell = {
+        program = "fish";
+      };
+      window = {
+        padding = { x = 10; y = 5; };
+        dynamic_padding = true;
+        opacity = 0.95;
+      };
+    };
+  };
 
   wayland.windowManager.sway = {
     enable = true;
@@ -295,17 +327,6 @@ in
     };
   };
 
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      window = {
-        padding = { x = 10; y = 5; };
-        dynamic_padding = true;
-        opacity = 0.95;
-      };
-    };
-  };
-
   programs.rofi = {
     enable = true;
   };
@@ -385,6 +406,14 @@ in
     enable = true;
     package = unstable-pkgs.vscodium;
     profiles.default = {
+      userSettings = {
+        "terminal.integrated.profiles.linux" = {
+          "fish" = {
+            "path" = "${pkgs.fish}/bin/fish";
+          };
+        };
+        "terminal.integrated.defaultProfile.linux" = "fish";
+      };
       extensions = with unstable-pkgs.vscode-extensions; [
         vscodevim.vim
         mkhl.direnv
