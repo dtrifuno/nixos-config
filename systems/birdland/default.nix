@@ -71,11 +71,15 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.groups.media = {};
+  systemd.tmpfiles.rules = [
+    "d /srv/music 2775 root media - -"
+  ];
+
   users.users."eigenwerk" = {
     isNormalUser = true;
     description = "Home";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "media" ];
   };
 
   home-manager.users.eigenwerk =
@@ -84,7 +88,7 @@
   users.users."mi-c3" = {
     isNormalUser = true;
     description = "Work";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "media" ];
   };
 
   home-manager.users."mi-c3" =
