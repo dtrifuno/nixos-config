@@ -28,6 +28,8 @@ in
     sway-contrib.grimshot
     wl-clipboard
     meld
+    (pkgs.fooyin.override { libvgm = null; })
+    imagemagick
   ];
 
   programs.git = {
