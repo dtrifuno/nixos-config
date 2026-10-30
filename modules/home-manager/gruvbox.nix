@@ -169,4 +169,10 @@ in
       };
     };
   };
+
+  programs.opencode = {
+    tui = {
+      theme = "gruvbox";
+    };
+  };
 }
