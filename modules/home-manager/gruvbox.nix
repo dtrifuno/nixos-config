@@ -3,6 +3,10 @@ let
   unstable-pkgs = import inputs.nixpkgs-unstable {
     inherit (pkgs.stdenv.hostPlatform) system;
   };
+
+  wallpapers = import ../../packages/wallpapers.nix {
+    inherit pkgs;
+  };
 in
 {
   programs.alacritty = {
@@ -11,6 +15,15 @@ in
 
   wayland.windowManager.sway = {
     config = {
+      output = {
+        "*".bg = "${wallpapers}/share/wallpapers/gruvbox/forest-river.jpg fill";
+        "Dell Inc. DELL G2724D HCP06Y3" = {
+          bg = "${wallpapers}/share/wallpapers/gruvbox/forest-river.jpg fill";
+        };
+        "Dell Inc. DELL G2724D 1DP06Y3" = {
+          bg = "${wallpapers}/share/wallpapers/gruvbox/forest-spring.jpg fill";
+        };
+      };
       bars = [{
         position = "top";
         statusCommand = "i3status-rs ${config.home.homeDirectory}/${config.xdg.configFile."i3status-rust/config-top.toml".target}";
@@ -54,7 +67,6 @@ in
           };
         };
       }];
-  
       colors = {
         background = "#282828"; # bg0
         focused = {

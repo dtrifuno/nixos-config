@@ -19,7 +19,7 @@ in
 {
   home.packages = with pkgs; [
     cliphist
-    feh
+    swaybg
     mako
     nemo
     vlc
