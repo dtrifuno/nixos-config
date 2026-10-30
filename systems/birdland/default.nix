@@ -1,12 +1,6 @@
 { config, pkgs, lib, ... }:
 
 {
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "corefonts"
-      "vista-fonts"
-    ];
-
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -14,6 +8,7 @@
       ../../modules/nixos/fonts.nix
       ../../modules/nixos/gc.nix
       ../../modules/nixos/sway.nix
+      ../../modules/nixos/unfree.nix
     ];
 
   # Use the systemd-boot EFI boot loader.

@@ -3,11 +3,7 @@ let
   unstable-pkgs = import inputs.nixpkgs-unstable {
     inherit (pkgs) system;
 
-    config.allowUnfreePredicate = pkg:
-      builtins.elem (pkgs.lib.getName pkg) [
-        "claude-code"
-        "vscode-extension-anthropic-claude-code"
-      ];
+    config.allowUnfreePredicate = pkgs.config.allowUnfreePredicate;
   };
 in
 {
