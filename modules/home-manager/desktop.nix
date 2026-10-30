@@ -12,7 +12,7 @@ let
   has_battery = hostname == "blue-note";
 
   unstable-pkgs = import inputs.nixpkgs-unstable {
-    inherit (pkgs) system;
+    inherit (pkgs.stdenv.hostPlatform) system;
     config.allowUnfree = pkgs.config.allowUnfree;
   };
 in
