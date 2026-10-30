@@ -9,5 +9,7 @@
       "claude-code"
       "vscode-extension-anthropic-claude-code"
       "reaper"
+      "steam"
+      "steam-unwrapped"
     ];
 }

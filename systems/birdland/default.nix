@@ -66,6 +66,10 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
+  programs.steam = {
+    enable = true;
+  };
+
   users.groups.media = {};
   systemd.tmpfiles.rules = [
     "d /srv/music 2775 root media - -"
