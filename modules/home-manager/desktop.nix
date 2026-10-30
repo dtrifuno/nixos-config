@@ -30,6 +30,7 @@ in
     meld
     (pkgs.fooyin.override { libvgm = null; })
     imagemagick
+    filezilla
   ];
 
   programs.git = {
