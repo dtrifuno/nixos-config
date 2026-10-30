@@ -80,6 +80,7 @@
   home-manager.users.eigenwerk = {
     imports = [
       ../../users/eigenwerk/default.nix
+      ../../modules/home-manager/game-development.nix
       ../../modules/home-manager/music-production.nix
     ];
   };
