@@ -7,5 +7,6 @@
       "vista-fonts"
       "claude-code"
       "vscode-extension-anthropic-claude-code"
+      "reaper"
     ];
 }

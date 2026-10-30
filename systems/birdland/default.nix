@@ -77,8 +77,12 @@
     extraGroups = [ "networkmanager" "wheel" "docker" "media" ];
   };
 
-  home-manager.users.eigenwerk =
-    import ../../users/eigenwerk/default.nix;
+  home-manager.users.eigenwerk = {
+    imports = [
+      ../../users/eigenwerk/default.nix
+      ../../modules/home-manager/music-production.nix
+    ];
+  };
 
   users.users."mi-c3" = {
     isNormalUser = true;
