@@ -128,11 +128,25 @@ in
     enable = true;
   };
 
+  programs.imv = {
+    enable = true;
+  };
+
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
       "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
-    };
+    } // lib.genAttrs [
+      "image/png"
+      "image/jpeg"
+      "image/gif"
+      "image/webp"
+      "image/bmp"
+      "image/tiff"
+      "image/svg+xml"
+      "image/avif"
+      "image/heif"
+    ] (_: "imv-dir.desktop");
   };
   xdg.configFile."mimeapps.list".force = true;
 
