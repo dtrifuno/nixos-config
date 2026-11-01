@@ -33,6 +33,14 @@ in
     filezilla
   ];
 
+  home.pointerCursor = {
+    name = "Adwaita";
+    package = pkgs.adwaita-icon-theme;
+    size = 24;
+    gtk.enable = true;
+    sway.enable = true;
+  };
+
   programs.obsidian = {
     enable = true;
     defaultSettings = {
