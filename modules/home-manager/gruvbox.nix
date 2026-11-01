@@ -108,6 +108,21 @@ in
     };
   };
 
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Gruvbox-Dark";
+      package = pkgs.gruvbox-gtk-theme;
+    };
+    iconTheme = {
+      name = "Gruvbox-Plus-Dark";
+      package = pkgs.gruvbox-plus-icons;
+    };
+    gtk4.theme = config.gtk.theme;
+  };
+
+  dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+
   programs.i3status-rust = {
     bars.top.settings.theme = {
       theme = "gruvbox-dark";
