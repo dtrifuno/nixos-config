@@ -31,6 +31,8 @@ in
     (pkgs.fooyin.override { libvgm = null; })
     imagemagick
     filezilla
+    typst
+    tinymist
   ];
 
   home.pointerCursor = {
@@ -66,6 +68,26 @@ in
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+
+    plugins = with pkgs.vimPlugins; [
+      nvim-lspconfig
+      {
+        plugin = typst-preview-nvim;
+        type = "lua";
+        config = ''
+          require('typst-preview').setup()
+        '';
+      }
+    ];
+
+    extraLuaConfig = ''
+      vim.lsp.config('tinymist', {
+        settings = {
+          formatterMode = 'typstyle',
+        },
+      })
+      vim.lsp.enable('tinymist')
+    '';
 
     extraConfig = ''
       " Use spaces instead of tabs
@@ -466,6 +488,7 @@ in
         oxc.oxc-vscode
         gruntfuggly.todo-tree
         vadimcn.vscode-lldb
+        myriad-dreamin.tinymist
       ];
     };
   };
