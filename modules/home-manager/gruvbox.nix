@@ -70,11 +70,11 @@ in
       colors = {
         background = "#282828"; # bg0
         focused = {
-          border = "#458588"; # blue
+          border = "#d65d0e"; # orange
           background = "#282828"; # bg0
           text = "#ebdbb2"; # fg
-          indicator = "#d79921"; # yellow
-          childBorder = "#458588"; # blue
+          indicator = "#fe8019"; # bright orange
+          childBorder = "#d65d0e"; # orange
         };
         focusedInactive = {
           border = "#665c54"; # bg3
