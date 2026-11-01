@@ -155,6 +155,10 @@ in
     ];
   };
 
+  programs.rofi = {
+    theme = "gruvbox-dark";
+  };
+
   programs.chromium = {
     extensions = [
       "giokfhncgfjkoamdbhfhfhgpikaioccc" # Gruvbox Slate
