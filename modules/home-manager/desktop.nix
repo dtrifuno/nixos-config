@@ -41,6 +41,7 @@ in
       };
       safe.directory = [
         "/srv/nixos-config"
+        "/srv/password-db"
       ];
     };
   };
