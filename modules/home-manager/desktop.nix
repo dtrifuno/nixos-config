@@ -107,6 +107,10 @@ in
     };
   };
 
+  programs.zathura = {
+    enable = true;
+  };
+
   wayland.windowManager.sway = {
     enable = true;
     config = {
