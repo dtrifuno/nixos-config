@@ -128,6 +128,14 @@ in
     enable = true;
   };
 
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
+    };
+  };
+  xdg.configFile."mimeapps.list".force = true;
+
   wayland.windowManager.sway = {
     enable = true;
     config = {
