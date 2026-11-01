@@ -119,7 +119,7 @@ in
       window = {
         padding = { x = 10; y = 5; };
         dynamic_padding = true;
-        opacity = 0.95;
+        opacity = 0.97;
       };
     };
   };
