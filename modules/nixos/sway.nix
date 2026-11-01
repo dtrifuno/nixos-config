@@ -2,6 +2,7 @@
 
 {
   services.displayManager.gdm.enable = true;
+  services.accounts-daemon.enable = true;
 
   # for SVG icon support in swaybar
   programs.gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
