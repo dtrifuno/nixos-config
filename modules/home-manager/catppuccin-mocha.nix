@@ -108,6 +108,26 @@ in
     };
   };
 
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Catppuccin-GTK-Lavender-Dark";
+      package = pkgs.magnetic-catppuccin-gtk.override {
+        accent = [ "lavender" ];
+      };
+    };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.catppuccin-papirus-folders.override {
+        flavor = "mocha";
+        accent = "lavender";
+      };
+    };
+    gtk4.theme = config.gtk.theme;
+  };
+
+  dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+
   programs.i3status-rust = {
     bars.top.settings.theme = {
       theme = "ctp-mocha";
