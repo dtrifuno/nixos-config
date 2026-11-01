@@ -33,6 +33,13 @@ in
     filezilla
   ];
 
+  programs.obsidian = {
+    enable = true;
+    defaultSettings = {
+      app.vimMode = true;
+    };
+  };
+
   programs.git = {
     enable = true;
     settings = {

@@ -8,6 +8,7 @@
       "vista-fonts"
       "claude-code"
       "vscode-extension-anthropic-claude-code"
+      "obsidian"
       "reaper"
       "steam"
       "steam-unwrapped"

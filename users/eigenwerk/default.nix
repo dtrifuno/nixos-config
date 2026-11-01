@@ -23,5 +23,9 @@ in
     enable = true;
   };
 
+  programs.obsidian.vaults.zettelkasten = {
+    target = "zettelkasten";
+  };
+
   home.stateVersion = "26.05";
 }

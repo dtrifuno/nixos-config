@@ -128,6 +128,18 @@ in
     };
   };
 
+  programs.obsidian.defaultSettings = {
+    appearance.theme = "obsidian"; # dark
+    themes = [
+      (pkgs.fetchFromGitHub {
+        owner = "insanum";
+        repo = "obsidian_gruvbox";
+        rev = "bec6c083415980155aefc1a0d26c7cfe68fd85eb";
+        hash = "sha256-Ckj3/sBxNKtpedZo/Wau3VlLZidKwAP47+RtfGZyqcY=";
+      })
+    ];
+  };
+
   programs.chromium = {
     extensions = [
       "giokfhncgfjkoamdbhfhfhgpikaioccc" # Gruvbox Slate
