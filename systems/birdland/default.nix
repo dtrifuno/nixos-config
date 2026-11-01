@@ -7,6 +7,7 @@
       ../../modules/nixos/common.nix
       ../../modules/nixos/fonts.nix
       ../../modules/nixos/gc.nix
+      ../../modules/nixos/shared.nix
       ../../modules/nixos/sway.nix
       ../../modules/nixos/unfree.nix
     ];
@@ -70,15 +71,10 @@
     enable = true;
   };
 
-  users.groups.media = {};
-  systemd.tmpfiles.rules = [
-    "d /srv/music 2775 root media - -"
-  ];
-
   users.users."eigenwerk" = {
     isNormalUser = true;
     description = "Home";
-    extraGroups = [ "networkmanager" "wheel" "docker" "media" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "media" "nixos-config" "password-db" ];
   };
 
   home-manager.users.eigenwerk = {
@@ -92,7 +88,7 @@
   users.users."mi-c3" = {
     isNormalUser = true;
     description = "Work";
-    extraGroups = [ "networkmanager" "wheel" "docker" "media" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "media" "nixos-config" "password-db" ];
   };
 
   home-manager.users."mi-c3" =

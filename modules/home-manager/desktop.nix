@@ -36,11 +36,12 @@ in
   programs.git = {
     enable = true;
     settings = {
-      extraConfig = {
-        init = {
-          defaultBranch = "main";
-        };
+      init = {
+        defaultBranch = "main";
       };
+      safe.directory = [
+        "/srv/nixos-config"
+      ];
     };
   };
 
@@ -121,7 +122,7 @@ in
         { command = "wl-paste --type image --watch cliphist store"; }
         { command = "${pkgs.writeShellScript "keepassxc-unlock" ''
           ${pkgs.libsecret}/bin/secret-tool lookup keepassxc main  \
-            | ${pkgs.keepassxc}/bin/keepassxc --pw-stdin "$HOME/password-db/passwords.kdbx"
+            | ${pkgs.keepassxc}/bin/keepassxc --pw-stdin "/srv/password-db/passwords.kdbx"
         ''}";
         }
       ];
