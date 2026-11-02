@@ -29,6 +29,9 @@ in
 
   programs.vscodium = {
     profiles.default = {
+      userSettings = {
+        "claudeCode.hideOnboarding" = true;
+      };
       extensions = with unstable-pkgs.vscode-extensions; [
         anthropic.claude-code
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
