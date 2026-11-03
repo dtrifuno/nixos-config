@@ -5,6 +5,10 @@ let
 
     config.allowUnfreePredicate = pkgs.config.allowUnfreePredicate;
   };
+
+  mkObsidianPlugin = import ../../lib/obsidian-plugin.nix {
+    inherit pkgs;
+  };
 in
 {
   imports = [
@@ -48,6 +52,23 @@ in
   programs.claude-code = {
     enable = true;
     package = unstable-pkgs.claude-code;
+  };
+
+  programs.obsidian = {
+    defaultSettings.communityPlugins = [
+      (mkObsidianPlugin {
+        repo = "siosig/obsidian-nextcloudsync";
+        version = "1.0.13";
+        hashes = {
+          "main.js" = "sha256-qtbaW4enK7z7hSZD8gcAm39HT08WiUra9Cfg27pKdkQ=";
+          "manifest.json" = "sha256-rDZu9ywSeE62Wrdw8h8E+gecM5vtNbw34RQCuq/CASw=";
+          "styles.css" = "sha256-AI5y06XJcxgBj8IZ1PUrEn0XRVVeEL6boiO1E/prc1U=";
+        };
+      })
+    ];
+    vaults.notes = {
+      target = "notes";
+    };
   };
 
   home.stateVersion = "26.05";
