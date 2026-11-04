@@ -430,6 +430,7 @@ in
       # dark Chrome UI + prefers-color-scheme: dark
       "--force-dark-mode"
       "--enable-features=WebUIDarkMode"
+      "--no-default-browser-check"
     ];
     extensions = [
       "ddkjiahejlhfcafbddmgiahcphecmpfh" # uBlock Origin Lite
@@ -461,6 +462,8 @@ in
         "browser.search.visualSearch.featureGate" = false;
 
         "browser.shell.checkDefaultBrowser" = false;
+        "signon.rememberSignons" = false;
+        "extensions.formautofill.creditCards.enabled" = false;
         "browser.sessionstore.resume_from_crash" = false;
         "media.videocontrols.picture-in-picture.video-toggle.enabled" = false;
         "layout.css.prefers-color-scheme.content-override" = 0;
