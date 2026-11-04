@@ -44,6 +44,7 @@ in
     profiles.default = {
       userSettings = {
         "claudeCode.hideOnboarding" = true;
+        "claudeCode.preferredLocation" = "panel";
       };
       extensions = with unstable-pkgs.vscode-extensions; [
         anthropic.claude-code

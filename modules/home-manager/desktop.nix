@@ -150,6 +150,17 @@ in
     enable = true;
   };
 
+  programs.texlive = {
+    enable = true;
+    extraPackages = tpkgs: {
+      inherit (tpkgs)
+        scheme-medium
+        collection-langcyrillic
+        biblatex
+        biber;
+    };
+  };
+
   programs.imv = {
     enable = true;
   };
@@ -492,6 +503,7 @@ in
         gruntfuggly.todo-tree
         vadimcn.vscode-lldb
         myriad-dreamin.tinymist
+        james-yu.latex-workshop
       ];
     };
   };
