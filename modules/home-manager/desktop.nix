@@ -495,6 +495,7 @@ in
           };
         };
         "terminal.integrated.defaultProfile.linux" = "fish";
+        "csharp-dev-tools.homepage.enabled" = false;
       };
       extensions = with unstable-pkgs.vscode-extensions; [
         vscodevim.vim
