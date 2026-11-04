@@ -504,6 +504,13 @@ in
         vadimcn.vscode-lldb
         myriad-dreamin.tinymist
         james-yu.latex-workshop
+      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "csharp-dev-tools";
+          publisher = "JakubKozera";
+          version = "1.15.9";
+          sha256 = "sha256-QlLLZxzQoQqlCaXAiq4HxThgbKXB9xP/lGYU3dyeLd0=";
+        }
       ];
     };
   };
