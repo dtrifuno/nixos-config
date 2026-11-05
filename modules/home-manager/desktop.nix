@@ -185,6 +185,7 @@ in
 
   wayland.windowManager.sway = {
     enable = true;
+    extraOptions = [ "--unsupported-gpu" ];
     config = {
       defaultWorkspace = "workspace number 1";
       startup = [

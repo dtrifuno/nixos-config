@@ -72,10 +72,21 @@
     enable32Bit = true;
   };
 
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = true;
+    nvidiaSettings = true;
+  };
+
   environment.systemPackages = with pkgs; [
     lutris
     wineWow64Packages.staging
     winetricks
+    umu-launcher
+    nvtopPackages.full
+    vulkan-tools
   ];
 
   programs.steam = {

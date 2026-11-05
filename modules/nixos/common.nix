@@ -18,6 +18,7 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
+    pciutils
     neovim
     ripgrep
     git
