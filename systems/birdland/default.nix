@@ -67,6 +67,17 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
+  environment.systemPackages = with pkgs; [
+    lutris
+    wineWow64Packages.staging
+    winetricks
+  ];
+
   programs.steam = {
     enable = true;
   };
