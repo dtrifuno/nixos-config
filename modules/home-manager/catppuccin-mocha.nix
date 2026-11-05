@@ -208,6 +208,7 @@ in
       userSettings = {
         "workbench.colorTheme" = "Catppuccin Mocha";
         "workbench.iconTheme" = "catppuccin-mocha";
+        "editor.fontSize" = 15;
       };
     };
   };
