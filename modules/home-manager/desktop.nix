@@ -146,6 +146,12 @@ in
     };
   };
 
+  # nemo's "Open in Terminal" reads this key (defaults to gnome-terminal)
+  dconf.settings."org/cinnamon/desktop/applications/terminal" = {
+    exec = "alacritty";
+    exec-arg = "-e";
+  };
+
   programs.zathura = {
     enable = true;
   };
